@@ -17,7 +17,8 @@ REST actions
 	GET /:id
 
 Cleanup/bonus
-
+	404 page
+	error-handling requests
 
 
 NOTES
