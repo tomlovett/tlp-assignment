@@ -10,7 +10,7 @@ export default function App() {
 
       <Routes>
           <Route path="/" element={<ImagesIndex />} />
-          <Route path="/image/:id" element={<ImageDetail />} />
+          <Route path="/images/:id" element={<ImageDetail />} />
       </Routes>
     </div>
   );
