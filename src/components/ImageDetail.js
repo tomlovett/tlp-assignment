@@ -1,11 +1,20 @@
 import React from 'react'
 
-export default function ImageDetail() {
+export default function ImageDetail({ id, image }) {
+	const formattedTags = tagString => tagString.replace(',', '')
+
 	return (
 		<>
-			<h1>Image Detail</h1>
+			<h3>{dummyImage.img}</h3>
 
-			<p>Fun stuff here like a photo with its tags</p>
+			<p>{formattedTags(dummyImage.tags)}</p>
 		</>
 	)
+}
+
+const dummyImage = {
+	id: 1,
+	pageUrl: 'https://google.com',
+	img: 'nice pretty image',
+	tags: 'big pretty spooky'
 }
