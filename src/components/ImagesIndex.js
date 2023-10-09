@@ -1,24 +1,29 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import ImageCard from './ImageCard'
+import { GIGAPAY_KEY } from '../superSecretFile'
 
-export default function ImagesIndex() {	
+export default function ImagesIndex() {
+	const [ searchCriteria, setSearchCriteria ] = useState('')
+	const [ imageList, setImageList ] = useState([])
+
+	const requestImages = () => {
+		const baseUrl = "https://pixabay.com/api/?image_type=photo"
+		const fetchUrl = `${baseUrl}&key=${GIGAPAY_KEY }&q=${searchCriteria}`
+
+		fetch(fetchUrl)
+			.then(res => res.json())
+			.then(body => { setImageList(body.hits) })
+	}
+
 	return (
 		<>
 			<h3>Photos and Photos</h3>
 
-			<p>Search bar</p>
+			<input value={searchCriteria} onChange={e => setSearchCriteria(e.target.value)} />
+			<button onClick={requestImages}>Search</button>
 
-			{dummyPhotos.map((photo) => <ImageCard image={photo} key={photo.imageURL}/>)
-
-			}
+			{ imageList.map((image) => <ImageCard image={image} key={image.id}/>) }
 
 		</>
 	)
 }
-
-const dummyPhotos = [
-	{ id: 1, img: 'img1', imageURL: 'https://img1.com' },
-	{ id: 2, img: 'img2', imageURL: 'https://img2.com' },
-	{ id: 3, img: 'img3', imageURL: 'https://img3.com' },
-	{ id: 4, img: 'img4', imageURL: 'https://img4.com' },
-]

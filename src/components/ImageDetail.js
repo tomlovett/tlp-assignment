@@ -1,11 +1,12 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 
-export default function ImageDetail({ id, image }) {
+export default function ImageDetail({ image }) {
 	const formattedTags = tagString => tagString.replace(',', '')
 
 	return (
 		<>
-			<h3>{dummyImage.img}</h3>
+			<img src={image.imageURL} alt={image.imageURL} />
 
 			<p>{formattedTags(dummyImage.tags)}</p>
 		</>
